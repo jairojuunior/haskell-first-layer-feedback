@@ -1,0 +1,29 @@
+name: Basic submission verifications
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: haskell:9.0.2
+    steps:
+      - uses: actions/checkout@v2
+      - name: Permissions bug workaround
+        run: "chown -R $(id -un):$(id -gn) ~"
+      - name: Build code
+        run: stack build --allow-different-user
+      - name: Notify student that code did not build
+        if: failure()
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+          "title": "[AUTO] Seu código não compilou",
+          "body": "Este issue foi aberto automaticamente pois o commit _${{ github.sha }}_ não compilou.\n\n Encerre este issue antes de realizar uma nova submissão para evitar que se confunda. \n\n Bons estudos!",
+          "assignees": ["${{ github.actor }}"]
+          }'
+      - name: Run public tests
+        run: stack test
+
+
