@@ -29,6 +29,8 @@ jobs:
         if: failure()
         id: count_success
         run: echo "::set-output name=oks::$(cat test_result.log | grep "OK" | wc -l)\n"
+      - name: Print number of success
+        run: echo steps.count_success.outputs.oks
       - name: Notify student if code failed all tests
         if: steps.count_success.outputs.oks == 3
         run: echo "Failed all tests"
