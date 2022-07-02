@@ -8,7 +8,7 @@
 
 ## How to use?
 
-1 - On your own GitHub repository, create a repository `.github/workflows/`.
+1 - On your own GitHub repository, create a folder `.github/workflows/`.
 
 2 - Copy the file `workflow/actions.yml` to the recently created folder.
 
