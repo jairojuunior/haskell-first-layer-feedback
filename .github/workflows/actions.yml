@@ -30,8 +30,8 @@ jobs:
       - name: Run public tests
         id: run_tests
         run: |
-          stack test > test_result.log
           echo "::set-output name=codecompiled::1\n"
+          stack test > test_result.log
 
       - name: Count number of successful tests
         if: failure() && steps.run_tests.outputs.codecompiled == 1 

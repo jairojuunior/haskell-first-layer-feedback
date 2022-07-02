@@ -22,7 +22,7 @@ library:
   source-dirs: src
 
 tests:
-  semana03-test:
+  haskell-first-layer-feedback-test:
     main: Spec.hs
     source-dirs: test
     ghc-options:
