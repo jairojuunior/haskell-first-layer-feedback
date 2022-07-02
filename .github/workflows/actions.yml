@@ -25,5 +25,8 @@ jobs:
           }'
       - name: Run public tests
         run: stack test
+      - name: Notify student that code failed all tests
+        if: failure()
+        run: echo test
 
 
