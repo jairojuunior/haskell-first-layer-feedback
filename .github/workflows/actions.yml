@@ -11,7 +11,7 @@ jobs:
         run: "chown -R $(id -un):$(id -gn) ~"
       - name: Build code
         run: stack build --allow-different-user
-      - name: Notify student that code did not build
+      - name: Notify student if code did not build
         if: failure()
         run: |
           curl --request POST \
@@ -24,9 +24,12 @@ jobs:
           "assignees": ["${{ github.actor }}"]
           }'
       - name: Run public tests
-        run: stack test
-      - name: Notify student that code failed all tests
-        if: failure()
-        run: echo test
+        run: stack test > test_result.log
+      - name: Count number of successful tests
+        id: count_success
+        run: echo "::set-output name=oks::$(cat test_result.log | grep "OK" | wc -l)\n"
+      - name: Notify student if code failed all tests
+        if: steps.count_success.outputs.oks == 3
+        run: echo "Failed all tests"
 
 

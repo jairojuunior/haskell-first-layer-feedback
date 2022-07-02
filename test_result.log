@@ -1,0 +1,28 @@
+ClassicMath
+  fibonacci
+    5:  FAIL
+      test/Spec.hs:18:
+      expected: 5
+       but got: 21
+      Use -p '/fibonacci.5/' to rerun this test only.
+    10: FAIL
+      test/Spec.hs:19:
+      expected: 13
+       but got: 61
+      Use -p '/fibonacci.10/' to rerun this test only.
+    19: FAIL
+      test/Spec.hs:20:
+      expected: 75025
+       but got: 375121
+      Use -p '/19/' to rerun this test only.
+    22: FAIL
+      test/Spec.hs:21:
+      expected: 610
+       but got: 3046
+      Use -p '/22/' to rerun this test only.
+  factorial
+    5:  OK
+    7:  OK
+    10: OK
+
+4 out of 7 tests failed (0.00s)
