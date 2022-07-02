@@ -26,6 +26,7 @@ jobs:
       - name: Run public tests
         run: stack test > test_result.log
       - name: Count number of successful tests
+        if: failure()
         id: count_success
         run: echo "::set-output name=oks::$(cat test_result.log | grep "OK" | wc -l)\n"
       - name: Notify student if code failed all tests
