@@ -3,7 +3,7 @@
 
 **Problem:** Student submits code that doesn't compile or doesn't pass any test.
 
-**Proposed solution:** A simple GitHub Actions workflow that check the code immediatelly after submission. The feedback is provided via automatic issue created for the student when one of the aforementioned problems are identified. 
+**Proposed solution:** A simple GitHub Actions workflow that checks the code immediatelly after submission. The feedback is provided via automatic issue created for the student when one of the aforementioned problems are identified. 
 
 
 ## How to use?
