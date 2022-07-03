@@ -16,9 +16,9 @@ tests =
 testFibonacci :: TestTree
 testFibonacci = testGroup "fibonacci" [
     testCase "5" (fibonacci 5 @?= 5),
-    testCase "10" (fibonacci 7 @?= 13),
-    testCase "19" (fibonacci 25 @?= 75025),
-    testCase "22" (fibonacci 15 @?= 610)
+    testCase "7" (fibonacci 7 @?= 13),
+    testCase "25" (fibonacci 25 @?= 75025),
+    testCase "15" (fibonacci 15 @?= 610)
     ]
 
 testFactorial :: TestTree
